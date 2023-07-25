@@ -1,0 +1,37 @@
+.box{
+    margin-top: 150px;
+
+    .styl {
+        height: 50px;
+        justify-content: center;
+        font-size: 26px;
+        font-weight: 500;
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top: 50px;
+        padding: 10px 20px; 
+        background: linear-gradient(135deg, #ddb2b2, #c86363); 
+        border: 2px solid #c86363; /* Add a border */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        text-transform: uppercase;
+        transition: background-color 0.4s linear, color 0.4s linear; /* Add transitions for smooth effect */
+        position: relative;
+        color: white; /* Set text color to white */
+        font-family: 'Arial', sans-serif; /* Use a different font */
+      }
+      
+      .styl:hover {
+        background-color: #e87f7f; /* Add a different background color on hover */
+        cursor: pointer; /* Change the cursor to a pointer on hover */
+      }
+      
+
+    .text-area{
+        margin-left: 100px;
+        margin-right: 100px;
+        font-size: 22px;
+    }
+}
+body{
+    background-color: #ddb2b2;
+}

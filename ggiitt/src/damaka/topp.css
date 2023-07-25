@@ -1,0 +1,104 @@
+.navbarrr{
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    margin: auto;
+    z-index: 99;
+  }
+  
+  .app-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 3vw;
+    margin-top: 1vh;
+  }
+
+
+.menu-content {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+    justify-content: space-between;
+    margin-top: 1vh;
+    margin-left: 1vw;
+  }
+  
+  .logo{
+    color: black;
+    font-size: 30px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 24px;
+  }
+  
+  .menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+  }
+  
+  ul{
+    float: left;
+    display: flex;
+    justify-content: centre;
+    align-items: center;
+  }
+  
+  ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 15px;
+    
+  }
+  
+  ul li a{
+    text-decoration: none;
+    color: #2a0f0164;
+    font-family:Georgia;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+  }
+  
+  ul li a:hover{
+    background-color: tan;
+    font-size: larger;
+    color: white;
+  }
+
+  .bttn-Loginn{
+    width: 120px;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 17px;
+    background: transparent;
+    border-radius: 50px;
+    padding: 15px;
+    transform: translateX(620px);
+    text-decoration: none;
+    color: #2a0f0164;
+    font-family:Georgia;
+    font-weight: 900;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  /* .btn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+} */

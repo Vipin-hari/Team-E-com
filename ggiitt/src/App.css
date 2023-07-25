@@ -1,0 +1,49 @@
+/* NavBAr
+.navbar-nav a{
+  font-size:18px ;
+  
+}
+.body{
+  background-color:rgb(243, 243, 229) ;
+}
+
+
+
+
+
+
+.product-container {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+}
+
+.padding-container{
+  padding-left: 8%;
+  padding-right: 7%;
+}
+ */
+body{
+  background-color: beige;
+}
+.d-flex{
+  display: inline-flex;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.main{
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.impt-container {
+  position: relative;
+  overflow: hidden;
+}
