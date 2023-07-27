@@ -1,0 +1,42 @@
+const hre = require("hardhat");
+const { items } = require("../src/Items.json");
+
+const tokens = (n) => {
+  return ethers.utils.parseUnits(n.toString(), 'ether');
+};
+
+async function main() {
+  // Setup accounts
+  const [deployer] = await ethers.getSigners();
+
+  // Deploy ProductStorage
+  const ProductStorage = await hre.ethers.getContractFactory("ProductStorage");
+  const productstorage = await ProductStorage.deploy();
+  await productstorage.deployed();
+
+  console.log(`Deployed Productstorage Contract at: ${productstorage.address}\n`);
+
+  // Listing items...
+  for (const item of items) {
+    const transaction = await productstorage.connect(deployer).list(
+      item.id,
+      item.name,
+      tokens(item.price),
+      item.description,
+      item.quantity,
+      item.category,
+      item.imageAddr // Provide a default value (empty string) if imageAddr is undefined
+    );
+
+    await transaction.wait();
+
+    console.log(`Listed item ${item.id}: ${item.name}: $`);
+  }
+}
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
