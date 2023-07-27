@@ -1,0 +1,92 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.9;
+
+contract ProductStorage {
+    address public owner;
+    struct Item {
+        uint256 id;
+        string name;
+        uint256 price;
+        string description;
+        uint256 quantity;
+        string category;
+        string image;
+        // address addedBy;
+    }
+    struct Order{
+        uint256 time;
+        Item item;
+ }
+     mapping(uint256 => Item) public items;
+     mapping (address => uint256) public orderCount;
+     mapping (address => mapping (uint256 => Order))public orders;
+
+     event Buy(address buyer,uint orderId,uint256 itemId);
+     event List(string name ,uint256 price,uint256 quantity);
+     modifier onlyOwner(){
+        require(msg.sender == owner);
+     _;
+     }
+
+     constructor(){
+        owner = msg.sender;
+     } 
+
+   function list(
+        uint256 _id,
+        string memory _name,
+        uint256 _price,
+        string memory _description,
+        uint256 _quantity,
+        string memory _category,
+        string memory _image
+    ) public  onlyOwner(){
+        Item memory  item = Item({
+            id: _id,
+            name: _name,
+            price: _price,
+           description: _description,
+            quantity: _quantity,
+             category: _category,
+            image: _image
+            // addedBy: msg.sender
+        });
+
+        //Save to chain
+        items[_id] = item;
+        emit List (_name,_price,_quantity);
+    }
+    //for buy
+    function buy (uint256 _id ) public payable { 
+       //Fetch items
+       Item memory item = items[_id];
+
+       //Cost (crypto)required to buy item
+       require(msg.value >=item.price);
+
+       //See the item if it is available in stock(available quantity)
+       require(item.quantity>0);
+
+
+
+        //order creation
+        Order memory order =Order (block.timestamp,item);
+
+
+        // Add order for user
+        orderCount[msg.sender]++;
+        orders[msg.sender][orderCount[msg.sender]]=order;
+        // Sub from stock
+        items[_id].quantity=item.quantity-1;
+        //Emit Items to buy
+        emit Buy(msg.sender,orderCount[msg.sender],item.id);
+
+
+
+    }
+    //Withdraw coins
+    function withdraw()public onlyOwner{
+        (bool success,)=owner.call{value:address(this).balance}("");
+        require(success);
+    }
+    }
